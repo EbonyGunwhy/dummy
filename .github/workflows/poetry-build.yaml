@@ -42,7 +42,6 @@ jobs:
 
       - name: Build and publish to PyPI
         run: |
-          poetry config repositories.pypi https://pypi.org/legacy/
           poetry config pypi-token.pypi ${{ secrets.PYPI_API }}
           poetry publish --build
 
