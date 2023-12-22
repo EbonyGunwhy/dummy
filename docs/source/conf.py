@@ -22,7 +22,7 @@ copyright = '2023, EbonyGunwhy'
 author = 'EbonyGunwhy'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.4'
+release = "0.1.4"
 
 
 # -- General configuration ---------------------------------------------------
