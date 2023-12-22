@@ -1,24 +1,46 @@
 # .github/release.yaml
-name: Build Poetry distribution
-run-name: "Creating changelog as ${{ github.actor }} has pushed changes to main"
+name: Autogenerate release changelog
+run-name: "Creating release as ${{ github.actor }} has pushed changes to main"
 on:
   push:
     branches: 
     - main
 
-changelog:
-  exclude:
-    labels:
-      - ignore-for-release
-  categories:
-    - title: Breaking Changes 🛠
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
+
+  changelog:
+    exclude:
       labels:
-        - Semver-Major
-        - breaking-change
-    - title: Exciting New Features 🎉
-      labels:
-        - Semver-Minor
-        - enhancement
-    - title: Other Changes
-      labels:
-        - "*"
+        - ignore-for-release
+    categories:
+      - title: Breaking Changes 🛠
+        labels:
+          - Semver-Major
+          - breaking-change
+      - title: Exciting New Features 🎉
+        labels:
+          - Semver-Minor
+          - enhancement
+      - title: Other Changes
+        labels:
+          - "*"
