@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "dummyproject"
+name = "dummy_ERG"
 version = "0.1.0"
 description = ""
 authors = ["EbonyGunwhy <e.gunwhy@sheffield.ac.uk>"]
 readme = "README.md"
-packages = [{include = "dummyproject", from = "src"}]
+packages = [{include = "dummy_ERG", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
