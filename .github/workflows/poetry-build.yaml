@@ -42,7 +42,7 @@ jobs:
 
       - name: Build and publish to PyPI
         env:
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+          PYPI_TOKEN: ${{ secrets.PYPI_API }}
         run: |
           poetry config pypi-token.pypi $PYPI_TOKEN
           poetry publish --build
