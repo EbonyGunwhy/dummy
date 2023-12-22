@@ -4,8 +4,10 @@ run-name: "Creating release as ${{ github.actor }} has pushed changes to main"
 on:
   push:
     # Sequence of patterns matched against refs/tags
-    tags:
-      - '*.*.*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    branches:
+    - dev
+    #tags:
+     # - '*.*.*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
