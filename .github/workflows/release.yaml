@@ -1,5 +1,4 @@
-# .github/release.yaml
-name: Autogenerate release changelog
+name: Create release
 run-name: "Creating release as ${{ github.actor }} has pushed changes to main"
 on:
   push:
@@ -27,20 +26,3 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-
-  changelog:
-    exclude:
-      labels:
-        - ignore-for-release
-    categories:
-      - title: Breaking Changes 🛠
-        labels:
-          - Semver-Major
-          - breaking-change
-      - title: Exciting New Features 🎉
-        labels:
-          - Semver-Minor
-          - enhancement
-      - title: Other Changes
-        labels:
-          - "*"
