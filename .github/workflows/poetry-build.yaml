@@ -40,6 +40,12 @@ jobs:
           poetry config pypi-token.testpypi ${{ secrets.TESTPYPI_API }}
           poetry publish --build -r testpypi
 
+      - name: Build and publish to PyPI
+        run: |
+          poetry config repositories.pypi https://pypi.org/legacy/
+          poetry config pypi-token.pypi ${{ secrets.PYPI_API }}
+          poetry publish --build
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
