@@ -2,8 +2,9 @@ name: Build Poetry distribution
 run-name: "Building Poetry distribution as ${{ github.actor }} has pushed changes to main"
 on:
   push:
-    branches: 
-    - main
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - '*.*.*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -39,3 +40,10 @@ jobs:
           poetry config pypi-token.testpypi ${{ secrets.TESTPYPI_API }}
           poetry publish --build -r testpypi
 
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          gh release create ${{ github.ref }}
+          --generate-notes
+          --title "Version ${{ github.ref }}"
