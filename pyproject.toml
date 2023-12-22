@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "dummy"
+version = "0.1.0"
+description = ""
+authors = ["EbonyGunwhy <e.gunwhy@sheffield.ac.uk>"]
+readme = "README.md"
+packages = [{include = "dummy", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "1.22.4"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^5.2"
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "4.5.0"
+matplotlib = "^3.8.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
