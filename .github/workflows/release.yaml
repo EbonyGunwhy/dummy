@@ -1,5 +1,5 @@
 # .github/release.yaml
-
+run-name: "Creating changelog as ${{ github.actor }} has pushed changes to main"
 changelog:
   exclude:
     labels:
