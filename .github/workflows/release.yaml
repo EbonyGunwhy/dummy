@@ -1,5 +1,11 @@
 # .github/release.yaml
+name: Build Poetry distribution
 run-name: "Creating changelog as ${{ github.actor }} has pushed changes to main"
+on:
+  push:
+    branches: 
+    - main
+
 changelog:
   exclude:
     labels:
