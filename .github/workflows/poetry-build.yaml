@@ -41,8 +41,10 @@ jobs:
           poetry publish --build -r testpypi
 
       - name: Build and publish to PyPI
+        env:
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
-          poetry config pypi-token.pypi "${{ secrets.PYPI_API }}"
+          poetry config pypi-token.pypi $PYPI_TOKEN
           poetry publish --build
 
       - name: Release
