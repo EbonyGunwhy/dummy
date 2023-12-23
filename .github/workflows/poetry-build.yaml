@@ -46,7 +46,10 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "${{ steps.GetTag.outputs }}"
+        run: >-
+          gh release create ${{ steps.GetTag.outputs }}
+          --generate-notes
+          --title "Version ${{ steps.GetTag.outputs }}"
 
       - name: Build and publish to PyPI
         env:
