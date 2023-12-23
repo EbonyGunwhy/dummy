@@ -39,7 +39,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         run: |
-          export TAG_NAME="$(git describe --abbrev=0)"
+          TAG_NAME=$(git describe --abbrev=0)
           gh release create ${{ TAG_NAME }} --generate-notes --title "Version ${{ TAG_NAME }}"
 
       - name: Build and publish to PyPI
