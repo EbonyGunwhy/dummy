@@ -1,10 +1,10 @@
 name: Build Poetry distribution
 run-name: "Building Poetry distribution as ${{ github.actor }} has pushed changes to main"
 on:
-  push:
+  workflow_run:
     # Sequence of patterns matched against refs/tags
-    tags:
-      - '*.*.*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    types:
+      - completed
 
 jobs:
   build:

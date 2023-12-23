@@ -1,3 +1,3 @@
 # dummyproject
 
-This is a dummy project for praticing builds.
+This is a dummy project for practicing builds.
