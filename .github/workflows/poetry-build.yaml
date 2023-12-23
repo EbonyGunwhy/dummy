@@ -35,21 +35,25 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-      - name: Get tag version
-        id: GetTag
+      - name: Add version to environment vars
         run: |
-          mkdir CloneTemp
-          cd CloneTemp
-          git clone https://github.com/EbonyGunwhy/dummy_ERG.git .
-          git describe --abbrev=0
+          PROJECT_VERSION=$(poetry version --short)
+          echo "PROJECT_VERSION=$PROJECT_VERSION" >> $GITHUB_ENV
 
-      - name: Release
+      - name: Check if tag version matches project version
+        run: |
+          TAG=$(git describe HEAD --tags --abbrev=0)
+          echo $TAG
+          echo $PROJECT_VERSION
+          if [[ "$TAG" != "$PROJECT_VERSION" ]]; then exit 1; fi
+
+      - name: GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >-
-          gh release create "${{ steps.GetTag.outputs }}"
+          gh release create "${{ env.PROJECT_VERSION }}"
           --generate-notes
-          --title "Version "${{ steps.GetTag.outputs }}"
+          --title "Version "${{ env.PROJECT_VERSION }}"
 
       - name: Build and publish to PyPI
         env:
