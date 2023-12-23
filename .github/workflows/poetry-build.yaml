@@ -1,5 +1,5 @@
-name: Build Poetry distribution
-run-name: "Building Poetry distribution as ${{ github.actor }} has pushed changes to main"
+name: Create GitHub and PyPI releases
+run-name: "Creating releases as prelease was successful"
 on:
   workflow_run:
     workflows: [Creating prerelease]
