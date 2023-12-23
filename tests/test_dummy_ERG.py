@@ -3,4 +3,4 @@
 from dummy_ERG import __version__
 
 def test_version():
-    assert __version__ == "3.11.1"
+    assert __version__ == "3.11.2"
