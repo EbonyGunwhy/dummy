@@ -1,3 +1,3 @@
 # dummy_ERG/__init__.py
 
-__version__ = "3.10.2"
+__version__ = "3.10.3"
