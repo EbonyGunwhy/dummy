@@ -54,9 +54,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >-
-          gh release create "${{ env.PROJECT_VERSION }}"
+          gh release create ${{ env.PROJECT_VERSION }}
           --generate-notes
-          --title "Version "${{ env.PROJECT_VERSION }}"
+          --title "Version ${{ env.PROJECT_VERSION }}
 
       - name: Build and publish to PyPI
         env:
